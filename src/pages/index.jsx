@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import Link from "next/link";
-import axios from "src/configs/axios";
 import Header from "../parts/Header";
 import Hero from "../parts/Hero";
 
@@ -11,15 +9,19 @@ import ListCourses from "src/parts/ListCourses";
 import ListCategories from "src/parts/ListCategories";
 import Footer from "src/parts/Footer";
 
+import courses from "../constants/api/courses";
+
 
 const inter = Inter({ subsets: ["latin"] });
-function Home({ data }) {
+
+
+export default  function Home({ data }) {
+  console.log(data);
   return (
     <>
       <Head>
         <title>BTSBIMBEL</title>
         <meta name="description" content="Next.js + Tailwind CSS" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <main>
@@ -51,12 +53,19 @@ function Home({ data }) {
     </>
   );
 }
-
-Home.getInitialProps = async (ctx) => {
+export async function getServerSideProps() {
   try {
-    const data = await axios.get("/courses");
-    return { data: data.data.data };
-  } catch (error) {}
-};
+    const data = await courses.all();
+    return {
+      props: { data: data.data },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { data: [] },
+    };
+  }
+}
 
-export default Home;
+
+

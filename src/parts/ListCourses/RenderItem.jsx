@@ -23,7 +23,7 @@ export default function RenderItem({ item }) {
                 {item?.level ?? "course level"}
             </h5>
         </div>
-        <Link href="/courses/[slug]" as={`/courses/${item.id}`} className="link-wrapped"></Link>
+        <Link href="/courses/[id]" as={`/courses/${item.id}`} className="link-wrapped"></Link>
       </div>
     </div>
   );
