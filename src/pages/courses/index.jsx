@@ -138,7 +138,7 @@ export default function Courses({ data }) {
                                     href="/courses/[id]"
                                     as={`/courses/${item.id}`}
                                   >
-                                    <a className="link-wrapped"></a>
+                                    {/* <a className="link-wrapped"></a> */}
                                   </Link>
                                 </div>
                               </div>
