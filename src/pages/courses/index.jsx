@@ -39,7 +39,6 @@ export default function Courses({ data }) {
       courses
         .all({ params: { q: e.target.value } })
         .then((res) => {
-          
           setSearchResponse({
             isLoading: false,
             isError: false,
@@ -55,7 +54,6 @@ export default function Courses({ data }) {
         });
     }, 1000);
   }
- 
 
   useEffect(() => {
     window.addEventListener("mousedown", clickOutside);
@@ -63,7 +61,6 @@ export default function Courses({ data }) {
       window.removeEventListener("mousedown", clickOutside);
     };
   }, []);
-
 
   return (
     <>
@@ -137,9 +134,8 @@ export default function Courses({ data }) {
                                   <Link
                                     href="/courses/[id]"
                                     as={`/courses/${item.id}`}
-                                  >
-                                    {/* <a className="link-wrapped"></a> */}
-                                  </Link>
+                                    className="link-wrapped"
+                                  ></Link>
                                 </div>
                               </div>
                             );
@@ -181,4 +177,3 @@ export async function getServerSideProps() {
     };
   }
 }
-
